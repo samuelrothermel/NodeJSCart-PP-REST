@@ -1,0 +1,43 @@
+{
+  "name": "nodejscart-pp-serversdk",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/server.js",
+    "migration:write": "node migrations/products-migration.js",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@paypal/paypal-server-sdk": "^0.6.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.20.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "~1.4.3",
+    "csurf": "^1.9.0",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "^4.19.2",
+    "express-handlebars": "^5.3.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^6.14.0",
+    "hbs": "^4.1.1",
+    "mongodb": "^6.13.1",
+    "mongoose": "^8.7.1",
+    "morgan": "~1.9.0",
+    "node-fetch": "^3.3.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.4.5"
+  },
+  "type": "module",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "nodemon": "^3.0.1",
+    "prettier": "3.0.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

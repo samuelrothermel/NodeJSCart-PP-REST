@@ -1,0 +1,79 @@
+{{#if products}}
+  <div class='row'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <div class='list-group'>
+        {{#each products}}
+          <div class='list-group-item border'>
+            <strong>{{this.item.title}}</strong>
+            <span class='badge price-cart'>${{this.price}}</span>
+            <div class='btn-group'>
+              <button
+                type='button'
+                class='btn btn-raised btn-info dropdown-toggle btn-sm custom-btn-width'
+                data-toggle='dropdown'
+                aria-haspopup='true'
+                aria-expanded='false'
+              >
+                Action
+              </button>
+              <div class='dropdown-menu'>
+                <a
+                  class='dropdown-item'
+                  href='cart/reduce/{{this.item._id}}'
+                >Reduce by 1</a>
+                <a
+                  class='dropdown-item'
+                  href='cart/remove/{{this.item._id}}'
+                >Remove All</a>
+              </div>
+            </div>
+            <span class='total'>Quantity: {{this.qty}}</span>
+
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <h4>Total: ${{totalPrice}}</h4>
+      <div
+        data-pp-message
+        data-pp-style-layout='text'
+        data-pp-style-logo-type='inline'
+        data-pp-style-text-color='black'
+        data-pp-style-text-size='15'
+        data-pp-amount='{{totalPrice}}'
+        data-pp-placement='cart'
+      >
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class='row'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <div id='result-message' class='result-message'></div>
+      <div class='bordered-section'>
+        <div id='paypal-button-container'>
+          <a
+            href='/checkout'
+            class='btn btn-raised btn-success btn-lg btn-block'
+            style='margin-bottom: 20px;'
+          >Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class='empty'>
+    <h2>Oops, your cart is empty</h2>
+    <img src='/icons/empty-cart.svg' alt='Empty cart' />
+  </div>
+{{/if}}
+<script>
+  const clientId = '<%= clientId %>';
+</script>
+<script src='/javascripts/cart.js'></script>
