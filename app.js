@@ -25,7 +25,12 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-mongoose.connect(mongoDbUrl);
+mongoose.connect(mongoDbUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000, // Adjust the timeout as needed
+  socketTimeoutMS: 45000, // Adjust the timeout as needed
+});
 
 // Import passport configuration
 import './config/passport.js';
@@ -48,7 +53,7 @@ app.use(
       mongoUrl: mongoDbUrl,
     }),
     cookie: { maxAge: 180 * 60 * 1000 },
-  }),
+  })
 );
 app.use(flash());
 app.use(passport.initialize());
